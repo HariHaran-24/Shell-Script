@@ -1,0 +1,171 @@
+<html>
+    <head>
+        
+	<title>Login</title>
+	
+    
+    <style>
+		.billboard.light{
+    	    background-color:#DDA0DD ;
+    		background-size:cover;
+    		height:cover;
+        text-align: center;
+
+   		}
+        
+   		.center
+           {
+               margin-left:auto;
+               margin-right: auto;
+               margin-top: 10%;
+           }
+       th{
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+        color:black;
+        padding:10px;
+      }
+      tr{
+          padding:10px;
+      }
+      
+    </style>
+    </head>
+    <body class="billboard light">
+        
+            <form name="form" method="post" action="/newuser">
+            <table class="center"  id="ta">
+                <tr>
+                    <th colspan="2">Enter  Details</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th><input type="text" name="Name" onblur="checkname()"><p id="n" hidden>Enter Valid Name</p></th>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <th><input type="text" name="Phone" onblur="checkphone()"><p id="p" hidden>Enter Valid Phone Number</p></th>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <th><input type="text" name="Email" onblur="checkemail()"><p id="e" hidden>Enter Valid Email</p></th>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <th><input type="textarea" name="Address" onblur="checkaddress()"> <p id="a" hidden>Enter Address</p></th>
+
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <th><input type="password" name="Password" onblur="checkpassword()"><p id="pa" hidden>Password must be 8 charaacters</p></th>
+                </tr>
+                <tr>
+                    <th>Confirm Password</th>
+                    <th><input type="password" name="ConfirmPassword" onblur="checkconfirmpassword()"><p id="cp" hidden>Password and Confirm passwordmust be same</p></th>
+                </tr>
+                <tr>
+                    <th><input type="submit" value="submit" onclick="return fun()"></th>
+                    <th><input type="reset" value="reset"></th>
+                </tr>
+                
+            </table>
+            </form>
+            <script type="text/javascript">
+                
+                var c=0,c1=0,c2=0,c3=0,c4=0;
+                function checkname()
+                {
+                    let n=document.form.Name.value;
+                    if((n.match(/[^a-zA-Z]/g)))
+                    {
+                        document.getElementById('n').hidden=false;
+                        c=0;
+                    }
+                    else
+                    {
+                        document.getElementById('n').hidden=true;
+                        c=1;
+                    }
+                }
+                function checkemail()
+                {
+                    let n=document.form.Email.value;
+                    if(!(n.endsWith('@gmail.com')))
+                    {
+                        document.getElementById('e').hidden=false;
+                        c1=0;
+                    }
+                    else
+                    {
+                        document.getElementById('e').hidden=true;
+                        c1=1;
+                    }
+                }
+                function checkphone()
+                {
+                    let n=document.form.Phone.value;
+                    if((n.match(/[^0-9]/g))  || n.length!=10)
+                    {
+                        document.getElementById('p').hidden=false;
+                        c2=0;
+                    }
+                    else
+                    {
+                        document.getElementById('p').hidden=true;
+                        c2=1;
+                    }
+                }
+                function checkaddress()
+                {
+                    let n=document.form.Address.value;
+                    if(n.length==0)
+                    {
+                        document.getElementById('a').hidden=false;
+                        c3=0;
+                    }
+                    else
+                    {
+                        document.getElementById('a').hidden=true;
+                        c3=1;
+                    }
+                }
+                function checkpassword()
+                {
+                    let n=document.form.Password.value;
+                    if(n.length<8)
+                    {
+                        document.getElementById('pa').hidden=false;
+                        c4=0;
+                    }
+                    else
+                    {
+                        document.getElementById('pa').hidden=true;
+                        c4=1;
+                    }
+                }
+                function checkconfirmpassword()
+                {
+                    let n=document.form.Password.value;
+                    let n1=document.form.ConfirmPassword.value;
+                    if(n==n1 )
+                    {
+                        document.getElementById('cp').hidden=true;
+                        c5=1;
+                    }
+                    else
+                    {
+                        document.getElementById('cp').hidden=false;
+                        c5=0;
+                    }
+                }
+                function fun()
+                {
+                    if(c==1&&c1==1&&c2==1&&c3==1&&c4==1&&c5==1)
+                        return true;
+                    else
+                        return false;
+                }
+            </script>    
+    </body>
+</html>

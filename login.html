@@ -1,0 +1,61 @@
+<html>
+    <head>
+        
+	<title>NewUser</title>
+	
+    
+    <style>
+		.billboard.light{
+    	    background-color:#DDA0DD ;
+    		background-size:cover;
+    		height:100vh;
+        text-align: center;
+
+   		}
+        
+   		.center
+           {
+               margin-left:auto;
+               margin-right: auto;
+               margin-top: 10%;
+           }
+       th{
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+        color:black;
+        padding:10px;
+      }
+      tr{
+          padding:10px;
+      }
+      
+    </style>
+    </head>
+    <body class="billboard light">
+        
+            <form name="form" method="post" action="/check">
+            <table class="center"  id="ta">
+                <tr>
+                    <th colspan="2">Enter Login Details</th>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <th><input type="text" name="Phone"></th>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <th><input type="password" name="Password"></th>
+                </tr>
+                <tr>
+                    <th colspan="2"><input type="submit" value="submit"></th>
+                </tr>
+                <tr>
+                    <th colspan="2"><input type="button" value="New User" onclick="/new"></th>
+                </tr>
+            </table>
+            </form>
+        
+           
+    </body>
+</html>
