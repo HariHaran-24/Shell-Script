@@ -1,7 +1,7 @@
 <html>
     <head>
         
-	<title>NewUser</title>
+	<title>Login</title>
 	
     
     <style>
@@ -34,28 +34,70 @@
     </head>
     <body class="billboard light">
         
-            <form name="form" method="post" action="/check">
+            <form name="form" method="post" action="check.php">
             <table class="center"  id="ta">
                 <tr>
                     <th colspan="2">Enter Login Details</th>
                 </tr>
                 <tr>
                     <th>Phone Number</th>
-                    <th><input type="text" name="Phone"></th>
+                    <th><input type="text" name="Phone" onblur="checkphone()"><p id="p" hidden>Enter Valid Phone Number</p></th>
                 </tr>
                 <tr>
                     <th>Password</th>
-                    <th><input type="password" name="Password"></th>
+                    <th><input type="password" name="Password" onblur="checkpassword()"><p id="pa" hidden>Password must be 8 charaacters</p></th>
                 </tr>
                 <tr>
-                    <th colspan="2"><input type="submit" value="submit"></th>
+                    <th colspan="2"><input type="submit" value="submit" onclick="return fun1()"></th>
                 </tr>
+        
                 <tr>
-                    <th colspan="2"><input type="button" value="New User" onclick="/new"></th>
+                    <th colspan="2"><input type="button" value="New User" onclick=fun()></th>
                 </tr>
             </table>
-            </form>
-        
-           
+            
+        </form>
+           <script>
+               var c1=0,c2=0;
+               function fun()
+               {
+                   location.href="newuser.html";
+               }
+               function checkphone()
+                {
+                    let n=document.form.Phone.value;
+                    if((n.match(/[^0-9]/g))  || n.length!=10)
+                    {
+                        document.getElementById('p').hidden=false;
+                        c2=0;
+                    }
+                    else
+                    {
+                        document.getElementById('p').hidden=true;
+                        c2=1;
+                    }
+                }
+                function checkpassword()
+                {
+                    let n=document.form.Password.value;
+                    if(n.length<8)
+                    {
+                        document.getElementById('pa').hidden=false;
+                        c1=0;
+                    }
+                    else
+                    {
+                        document.getElementById('pa').hidden=true;
+                        c1=1;
+                    }
+                }
+                function fun1()
+                {
+                    if(c1==1 && c2==1)
+                        return true;
+                    else
+                        return false;
+                }
+           </script>
     </body>
 </html>
